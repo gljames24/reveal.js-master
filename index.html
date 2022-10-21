@@ -21,27 +21,207 @@
 			}
 		</style>
 
+
+
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
 				<section>
 					<img class="r-stretch" src="https://rustacean.net/assets/rustacean-orig-noshadow.png">
-					<h3>
+					<h1>
 						Intro to Rust Lang
-					</h3>
-					<p style="color:rgb(0, 255, 221);">
+					</h1>
+					<p style="color:rgb(0, 255, 220);">
 						by James Garrard
 					</p> 
 				</section>
 				<section>
-						<aside class="notes">
-						<p>Some notes</p>
-						</aside>
+						<h>
+							Let's Get Started
+						</h>
 						<p>Some slide text</p>
 						<aside class="notes">
 						<p>and some more notes</p>
 					</aside>
+				</section>
+				<section>
+					<h style="color: rgb(220,160,220);">
+						History & Design Constraints
+					</h>
+					<
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							What is Rust?
+						</h1>
+						<p style="color:rgb(0, 255, 220);">
+							Initially developed in 2006 by Graydon Hoare, a Mozilla employee
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							What is Rust?
+						</h1>
+						<p style="color:rgb(0, 255, 220);">
+							Rust was sponsored by Mozilla in 2009 and officially announced to the public on July 7, 2010 under a dual MIT and Apache 2.0 license
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							What is Rust?
+						</h1>
+						<p style="color:rgb(0, 255, 220);">
+							Initially compiled in OCaml until 2011 when it was successfully bootstrapped to a self-hosting LLVM front end IR compiler written in Rust.
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							What is Rust?
+						</h1>
+						<p style="color:rgb(0, 255, 220);">
+							Significant language changes occurred up until 2015 and the official Rust 1.0 release
+						</p>
+						<p style="color:rgb(0, 255, 220);">
+							Currently version 1.64.0 as of the creation of this slideshow
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							What is Rust?
+						</h1>
+						<p style="color:rgb(0, 255, 220);">
+							Rust was inspired by Alef, C#, C++, Cyclone, Erlang, Haskell, Limbo, Newsqueak, OCaml, Ruby, Scheme, Standard ML, and Swift
+						</p>
+						<p style="color:rgb(0, 255, 220);">
+							And inspired Carbon, Crystal, Idris, Spark, Swift, Project Verona, Zig
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							What is Rust?
+						</h1>
+						<p style="color:rgb(0, 255, 220);">
+							Swift and Rust took inspiration from each other during their development.
+						</p>
+						<p style="color:rgb(0, 255, 220);">
+							Check out Chris Lattner's Homepage for more information on how he developed Swift and many other projects like the LLVM, Clang, & JITS at https://nondot.org/sabre/
+						</p>
+					</section>
+
+      				<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Why was Rust Created?
+						</h1>
+						<p style="color: rgb(250,200,65);">
+							Rust was developed as part of the Servo project
+						</p>
+						<p style="color: rgb(250,200,65);">
+							After 2014 portions of Servo were incorporated into Gecko and dubbed Firefox Quantum
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Why was Rust Created?
+						</h1>
+						<p style="color: rgb(250,200,65);">
+							During Covid layoffs and corporate restructuring at Mozilla, both Servo development and Rust development were passed off to the Linux foundation and Rust foundation respectively.
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Constraints
+						</h1>
+						<p style="color: rgb(250,200,65);" class="fragment fade-in-then-out">
+							⚹ Low level and high level
+						</p>
+						<p style="color: rgb(250,200,65);" class="fragment fade-in-then-out">
+							⚹ Able to run on any hardware that you would need a browser
+						</p>
+						<p style="color: rgb(250,200,65);" class="fragment fade-in-then-out">
+							⚹ Fast enough for web technologies and UX
+						</p>
+						<p style="color: rgb(250,200,65);" class="fragment fade-in-then-out">
+							⚹ Stable 
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Enter The Borrow Checker
+						</h1>
+						<p style="color:rgb(165, 210, 40);">
+							Variable types are inferred by the compiler with 'let', but can be explicity assigned with a ': type'
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Enter The Borrow Checker
+						</h1>
+						<p style="color:rgb(165, 210, 40);">
+							Values can be passed between variables, but only one variable can own the data at a time unless the value is constant
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Enter The Borrow Checker
+						</h1>
+						<p style="color:rgb(165, 210, 40);">
+							You can have const, 'static, immutable, and mutable variables
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Enter The Borrow Checker
+						</h1>
+						<p style="color:rgb(165, 210, 40);">
+							Variable types are inferred by the compiler with 'let', but can be explicity assigned with a ': type'
+						</p>
+					</section>
+
+				</section>
+
+				<section>
+					<h style="color: rgb(250,200,65);">
+						Language Features
+					</h>
+					<section>
+						
+					</section>
+
+      				<section>Vertical Slide 2
+					
+					</section>
+
+					<section>Vertical Slide 3
+
+					</section>
+				</section>
+
+				<section>
+					<h style="color: rgb(115,220,240);">
+						Packages & Frameworks
+					</h>
+					<section>
+						
+					</section>
+
+      				<section>Vertical Slide 2
+					
+					</section>
+
+					<section>Vertical Slide 3
+
+					</section>
 				</section>
 			</div>
 		</div>
