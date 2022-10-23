@@ -193,23 +193,175 @@
 						</p>
 					</section>
 
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Enter The Borrow Checker
+						</h1>
+						<p style="color:rgb(165, 210, 40);">
+							References are pointers that are guaranteed to have values or "aligned"
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Stack, Heap, & RAII
+						</h1>
+						<p style="color: rgb(220,160,220);">
+							All primative types are placed onto the stack
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Stack, Heap, & RAII
+						</h1>
+						<p style="color: rgb(220,160,220);">
+							"Resource Acquisition is Initialization"
+						</p>
+					</section>
+					
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Stack, Heap, & RAII
+						</h1>
+						<p style="color: rgb(220,160,220);">
+							To place something on the heap it needs to be Box&lt;T&gt;
+						</p>
+						<p style="color: rgb(220,160,220);">
+							This allows objects on the heap to inhert the drop trait destructor to ensure it is removed from memory when no longer in use 
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Stack, Heap, & RAII
+						</h1>
+						<p style="color: rgb(220,160,220);">
+							Because variables are in charge of freeing their own resources, resources can only have one owner and must be moved between owners
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Stack, Heap, & RAII
+						</h1>
+						<p style="color: rgb(220,160,220);">
+							This gives Rust its memory, concurrency, and thread safety baked into the design
+						</p>
+					</section>
 				</section>
 
 				<section>
 					<h style="color: rgb(250,200,65);">
 						Language Features
 					</h>
-					<section>
+
+					<section data-markdown>
+						<p style="color: rgb(255,88,88);" data-template>
+							[Rust Book](https://doc.rust-lang.org/book/)
+						</p>
+					</section>
+
+					<section data-markdown>
+						<p style="color: rgb(255,88,88);" data-template>
+							[Rust by Example](https://doc.rust-lang.org/rust-by-example/)
+						</p>
+					</section>
+					
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Operators
+						</h1>
 						
 					</section>
 
-      				<section>Vertical Slide 2
-					
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Operators
+						</h1>
+						<p style="color:rgb(0, 255, 220);">
+							They're the same as C!
+						</p>
+						<p style="color:rgb(0, 255, 220);" class="fragment fade-in">
+							Well, except for ++ & --
+						</p>
+						<p style="color:rgb(0, 255, 220);" class="fragment fade-in">
+							Rust prefers the unambiguous x += 1;
+						</p>
 					</section>
 
-					<section>Vertical Slide 3
-
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Operators
+						</h1>
+						<p style="color:rgb(0, 255, 220);">
+							The syntax is very close to C & Swift
+						</p>
 					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Primatives
+						</h1>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Primatives
+						</h1>
+						<p style="color:rgb(0, 255, 220);">
+							<table>
+								<thead>
+								<tr><th>Length</th><th>Signed</th><th>Unsigned</th></tr>
+								</thead>
+								<tbody>
+									<tr><th>8-bit</th><th>i8</th><th>u8</th></tr>
+									<tr><td>16-bit</td><td>i16</td><td>u16</td></tr>
+									<tr><td>32-bit</td><td>i32</td><td>u32</td></tr>
+									<tr><td>64-bit</td><td>i64</td><td>u64</td></tr>
+									<tr><td>128-bit</td><td>i128</td><td>u128</td></tr>
+									<tr><td>arch</td><td>isize</td><td>usize</td></tr>
+								</tbody>
+							</table>
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Primatives
+						</h1>
+						<table><thead><tr><th>Number literals</th><th>Example</th></tr></thead>
+							<tbody>
+							<tr><td>Decimal</td><td><code>98_222</code></td></tr>
+							<tr><td>Hex</td><td><code>0xff</code></td></tr>
+							<tr><td>Octal</td><td><code>0o77</code></td></tr>
+							<tr><td>Binary</td><td><code>0b1111_0000</code></td></tr>
+							<tr><td>Byte (<code>u8</code> only)</td><td><code>b'A'</code></td></tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Primatives
+						</h1>
+						<table>
+							<thead><tr><th>Type</th><th>Keyword</th><th>Example</th><th>Size</th></tr></thead>
+							<tbody>
+								<tr><td>Float</td><td>f32 & f64</td><td>10.0</td><td>4B & 8B</td></tr>
+								<tr><td>Char</td><td>char</td><td>😊</td><td>Unicode Scalar Value(1:4B)</td></tr>
+								<tr><td>Boolean</td><td>bool</td><td>false</td><td>1B</td></tr>
+							</tbody>
+						</table>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Primatives
+						</h1>
+						
+					</section>
+      				
 				</section>
 
 				<section>
