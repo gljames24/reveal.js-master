@@ -183,13 +183,13 @@
 							In functions you can 
 						</p>
 						<p style="color:rgb(165, 210, 40);" class="fragment fade-in-then-out">
-							pass a value as a literal
+							pass a value as a literal: x
 						</p>
 						<p style="color:rgb(165, 210, 40);" class="fragment fade-in-then-out">
-							pass a reference
+							pass a reference: &x
 						</p>
 						<p style="color:rgb(165, 210, 40);" class="fragment fade-in-then-out">
-							pass a mutable reference
+							pass a mutable reference &mut x
 						</p>
 					</section>
 
@@ -267,6 +267,12 @@
 							[Rust by Example](https://doc.rust-lang.org/rust-by-example/)
 						</p>
 					</section>
+
+					<section data-markdown>
+						<p style="color: rgb(255,88,88);" data-template>
+							[Rust Online Editor](https://play.rust-lang.org/)
+						</p>
+					</section>
 					
 					<section data-auto-animate>
 						<h1 style="color: rgb(255,88,88);">
@@ -280,7 +286,7 @@
 							Operators
 						</h1>
 						<p style="color:rgb(0, 255, 220);">
-							They're the same as C!
+							They're mostly the same as C!
 						</p>
 						<p style="color:rgb(0, 255, 220);" class="fragment fade-in">
 							Well, except for ++ & --
@@ -301,13 +307,13 @@
 
 					<section data-auto-animate>
 						<h1 style="color: rgb(255,88,88);">
-							Primatives
+							Primative Types
 						</h1>
 					</section>
 
 					<section data-auto-animate>
 						<h1 style="color: rgb(255,88,88);">
-							Primatives
+							Primative Types
 						</h1>
 						<p style="color:rgb(0, 255, 220);">
 							<table>
@@ -328,14 +334,14 @@
 
 					<section data-auto-animate>
 						<h1 style="color: rgb(255,88,88);">
-							Primatives
+							Primative Types
 						</h1>
-						<table><thead><tr><th>Number literals</th><th>Example</th></tr></thead>
+						<table><thead><tr><th>Base</th><th>Example</th><th>Format</th></tr></thead>
 							<tbody>
-							<tr><td>Decimal</td><td><code>98_222</code></td></tr>
-							<tr><td>Hex</td><td><code>0xff</code></td></tr>
-							<tr><td>Octal</td><td><code>0o77</code></td></tr>
-							<tr><td>Binary</td><td><code>0b1111_0000</code></td></tr>
+							<tr><td>Decimal</td><td><code>98_222</code></td><td><code>{}</code></td></tr>
+							<tr><td>Hex</td><td><code>0xff</code></td><td><code>{:X|x}</code></td></tr>
+							<tr><td>Octal</td><td><code>0o77</code></td><td><code>{:o}</code></td></tr>
+							<tr><td>Binary</td><td><code>0b1111_0000</code></td><td><code>{:b}</code></td></tr>
 							<tr><td>Byte (<code>u8</code> only)</td><td><code>b'A'</code></td></tr>
 							</tbody>
 						</table>
@@ -343,13 +349,13 @@
 
 					<section data-auto-animate>
 						<h1 style="color: rgb(255,88,88);">
-							Primatives
+							Primative Types
 						</h1>
 						<table>
 							<thead><tr><th>Type</th><th>Keyword</th><th>Example</th><th>Size</th></tr></thead>
 							<tbody>
 								<tr><td>Float</td><td>f32 & f64</td><td>10.0</td><td>4B & 8B</td></tr>
-								<tr><td>Char</td><td>char</td><td>😊</td><td>Unicode Scalar Value(1:4B)</td></tr>
+								<tr><td>Character</td><td>char</td><td>😊</td><td>Unicode Scalar Value(1:4B)</td></tr>
 								<tr><td>Boolean</td><td>bool</td><td>false</td><td>1B</td></tr>
 							</tbody>
 						</table>
@@ -357,9 +363,102 @@
 
 					<section data-auto-animate>
 						<h1 style="color: rgb(255,88,88);">
-							Primatives
+							Printing/Formating
 						</h1>
-						
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Printing/Formating
+						</h1>
+						<pre data-id="code"><code data-line-numbers class="hlrust" data-trim>
+							let firstName = James;
+							let lastName = Garrard;
+							println!("My name is {} {}", firstName, lastName);
+						</code></pre>
+						<p class="fragment fade-in">
+							> My name is James Garrard
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Printing/Formating
+						</h1>
+						<pre data-id="code"><code data-line-numbers class="hlrust" data-trim>
+							let firstName = James;
+							let lastName = Garrard;
+							println!("My name is {1}, {0} {1}", firstName, lastName);
+						</code></pre>
+						<p class="fragment fade-in">
+							> My name is Garrard, James Garrard
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Printing/Formating
+						</h1>
+						<pre data-id="code"><code data-line-numbers class="hlrust" data-trim>
+							let firstName = James;
+							let lastName = Garrard;
+							println!("My name is {firstName} {lastName}");
+						</code></pre>
+						<p class="fragment fade-in">
+							> My name is James Garrard
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Printing/Formating
+						</h1>
+						<pre data-id="code"><code data-line-numbers class="hlrust" data-trim>
+							println!("My name is {firstName} {lastName}", 
+							lastName = Garrard, 
+							firstName = James);
+						</code></pre>
+						<p class="fragment fade-in">
+							> My name is James Garrard
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Printing/Formating
+						</h1>
+						<p style="color: rgb(115,220,240);" data-markdown data-template>
+							[Fill/Alignment](https://doc.rust-lang.org/std/fmt/)
+						</p>
+						<pre data-id="code"><code data-line-numbers class="hlrust" data-trim>
+							let width: usize = 5;
+							format!("{:[fill]&lt;width$}", x); 			// x----
+							format!("{:[fill]^1$}", x, 5);				// --x--
+							format!("{:[fill]&gt;width$}", x, width=x); // ----x
+							format!("{:04}", -5); 						// -0005
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Printing/Formating
+						</h1>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							format_string := text [ maybe_format text ] *
+							maybe_format := '{' '{' | '}' '}' | format
+							format := '{' [ argument ] [ ':' format_spec ] [ ws ] * '}'
+							argument := integer | identifier
+
+							format_spec := [[fill]align][sign]['#']['0'][width]['.' precision]type
+							fill := character
+							align := '&lt;' | '^' | '>'
+							sign := '+' | '-'
+							width := count
+							precision := count | '*'
+							type := '' | '?' | 'x?' | 'X?' | identifier
+							count := parameter | integer
+							parameter := argument '$'
+						</code></pre>
 					</section>
       				
 				</section>
