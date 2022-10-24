@@ -28,7 +28,7 @@
 		<div class="reveal">
 			<div class="slides">
 				<section>
-					<img class="r-stretch" src="https://rustacean.net/assets/rustacean-orig-noshadow.png">
+					<img class="r-stretch" src="https://rustacean.net/assets/rustacean-orig-noshadow.png"></img>
 					<h1>
 						Intro to Rust Lang
 					</h1>
@@ -45,6 +45,27 @@
 					<h style="color: rgb(220,160,220);">
 						History & Design Constraints &lt;
 					</h>
+
+					<section>
+						<h1  style="color: rgb(255,88,88);">
+							What is Rust
+						</h1>
+					</section>
+
+					<section>
+						<img class="r-stretch" src="https://www.turing.com/blog/wp-content/uploads/2021/12/Rust-is-the-most-popular-language-e1639388826762.png"></img>
+						<h1  style="color: rgb(255,88,88);">
+							What is Rust
+						</h1>
+					</section>
+
+					<section>
+						<img class="r-stretch" src="https://redmonk.com/sogrady/files/2022/10/lang.rank_.622-768x655.png"></img>
+						<h1  style="color: rgb(255,88,88);">
+							What is Rust
+						</h1>
+					</section>
+
 					<section data-auto-animate>
 						<h1 style="color: rgb(255,88,88);">
 							What is Rust?
@@ -285,7 +306,7 @@
 
 				<section>
 					<h style="color: rgb(250,200,65);">
-						Language Features
+						Language Features &lt;
 					</h>
 
 					<section data-markdown>
@@ -1634,7 +1655,7 @@
 
 				<section>
 					<h style="color: rgb(115,220,240);">
-						Packages & Frameworks
+						Packages & Frameworks &lt;
 					</h>
 
 					<section data-auto-animate>
@@ -1837,7 +1858,7 @@
 						<h1 style="color: rgb(255,88,88);">
 							Cargo
 						</h1>
-						<p style="color: rgb(115,220,240);">
+						<pre data-id="code"><code class="hltoml" data-trim>
 							[package]
 							name = "foo"
 							version = "0.1.0"
@@ -1847,37 +1868,130 @@
 							clap = "2.27.1" # from crates.io
 							rand = { git = "https://github.com/rust-lang-nursery/rand" } # from online repo
 							bar = { path = "../bar" } # from a path in the local filesystem
-						</p>
+						</code></pre>
 					</section>
 
 					<section data-auto-animate>
 						<h1 style="color: rgb(255,88,88);">
 							Oxides
 						</h1>
-						<p  style="color: rgb(115,220,240);">
-							cat -> bat
-							ls -> exa
-							find -> fd
-							htop -> ytop
-							rmlint → Czkawka
-							vim/neovim → Helix
-							etc -> etc
-						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Oxides
+						</h1>
+						<p style="color: rgb(115,220,240);">cat -> bat</p>
+						<p style="color: rgb(115,220,240);">ls -> exa</p>
+						<p style="color: rgb(115,220,240);">find -> fd</p>
+						<p style="color: rgb(115,220,240);">htop -> ytop</p>
+						<p style="color: rgb(115,220,240);">rmlint → Czkawka</p>
+						<p style="color: rgb(115,220,240);">vim/neovim → Helix</p>
+						<p style="color: rgb(115,220,240);">etc -> etc</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Frameworks
+						</h1>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Frameworks
+						</h1>
+						<p style="color: rgb(115,220,240);">Nannou</p>
+						<p style="color: rgb(115,220,240);">Yew.rs</p>
+						<p style="color: rgb(115,220,240);">WASM</p>
+						<p style="color: rgb(115,220,240);">Bevy</p>
+						<p style="color: rgb(115,220,240);">Rocket</p>
 					</section>
 
 					<section data-auto-animate>
 						<h1 style="color: rgb(255,88,88);">
 							Platforms
 						</h1>
-						<p  style="color: rgb(115,220,240);">
-							GCC and LLVM platforms, 
-							AVR and ARM hals,
-							your toaster and smart fridge,
-							basicly anything
-						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Platforms
+						</h1>
+						<p style="color: rgb(115,220,240);">GCC and LLVM platforms,</p>
+						<p style="color: rgb(115,220,240);">AVR and ARM hals,</p>
+						<p style="color: rgb(115,220,240);">your toaster and smart fridge,</p>
+						<p style="color: rgb(115,220,240);">basicly anything</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Projects
+						</h1>
+						<p style="color: rgb(115,220,240);">Joining C/++ and Assembly in the linux Kernel,</p>
+
 					</section>
 
 				</section>
+
+				<section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(220,160,220);">
+							Sieve of Era
+						</h1>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							fn main() {
+								let number = 100;
+								let prime_list = prime_sieve(number);
+								for i in 0..number{
+									if prime_list[i] {
+										print!("{i} ");
+									}
+								}
+							   
+							}
+							pub fn prime_sieve(n: usize) -> Vec&lt;bool&gt; {
+								let mut prime = vec![true; n+1];
+								prime[0] = false;
+								prime[1] = false;
+								for i in 2..=n{
+									prime[i] = true;   
+									for p in 2..=n{
+										if p*p &gt; n {break;}
+										if prime[p] == true {
+										let mut i = p*p;
+											while i &lt; n {
+												prime[i] = false;
+												i += p;
+											}
+										}
+									}    
+								}
+								prime
+							}
+						</code></pre>
+					</section>
+
+					<section>
+						<h1 style="color: rgb(220,160,220);">
+							Next Presentation
+						</h1>
+						<p style="color: rgb(250,200,65);">
+							Paul Eberhardt will present GO
+						</p>
+						<img class="r-stretch" src="https://buipalsulich.com/images/blog/gopher-eyes/gopher.png"></img>
+					</section>
+
+					<section>
+						<video autoplay="true" loop="true" muted="true" width="640">
+							<source src="https://youtu.be/Tdbr_wm6rI4" type="video/mp4">
+						</video>
+					</section>
+	
+				</section>
+
+				
+
 			</div>
 		</div>
 
