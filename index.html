@@ -435,9 +435,24 @@
 							format!("{:[fill]&lt;width$}", x); 			// x----
 							format!("{:[fill]^1$}", x, 5);				// --x--
 							format!("{:[fill]&gt;width$}", x, width=x); // ----x
-							format!("{:04}", -5); 						// -0005
 						</code></pre>
 					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Printing/Formating
+						</h1>
+						<p style="color: rgb(115,220,240);" data-markdown data-template>
+							[Fill/Alignment](https://doc.rust-lang.org/std/fmt/)
+						</p>
+						<pre data-id="code"><code data-line-numbers class="hlrust" data-trim>
+							format!("{:04}", -5); 		// -0005
+							format!("{:.1}", 0.05);		// 0.1
+							format!("{:?}", (1, 2));	// (1, 2)
+							format!("{:#?}", (1, 2));	// (\n1,\n 2\n)
+						</code></pre>
+					</section>
+
 
 					<section data-auto-animate>
 						<h1 style="color: rgb(255,88,88);">
