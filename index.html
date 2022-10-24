@@ -1100,7 +1100,7 @@
 						<p style="color: rgb(250,200,65);">
 							Closures are also an inline implementation of FnMut
 						</p>
-						<pre data-id="code"><code class="hlrust" data-trim></code>
+						<pre data-id="code"><code class="hlrust" data-trim>
 							let mut count = 0;
 							let mut inc = || {
 								count += 1;
@@ -1122,7 +1122,7 @@
 						<p style="color: rgb(250,200,65);">
 							Closures are also an inline implementation of Fn
 						</p>
-						<pre data-id="code"><code class="hlrust" data-trim></code>
+						<pre data-id="code"><code class="hlrust" data-trim>
 							let one = || 1;
 						</code></pre>
 					</section>
@@ -1354,17 +1354,14 @@
 						<p style="color: rgb(255,88,88);">
 							Match:
 						</p>
-						<p style="color: rgb(255,88,88);">
-							match type{
-								Pattern => Expression,
-								true => println!("Correct"),
-								1 | 2 | 8 => println!("128"),
-								'a'..='j' => println!("Inclusive range"),
-								_ => println("Default or Ignore"),
-							}
-						</p>
 						<pre data-id="code"><code class="hlrust" data-trim>
-							
+							match type{
+								Pattern =&gt; Expression,
+								true =&gt; println!("Correct"),
+								1 | 2 | 8 =&gt; println!("128"),
+								'a'..='j' =&gt; println!("Inclusive range"),
+								_ =&gt; println("Default or Ignore"),
+							}
 						</code></pre>
 					</section>
 
@@ -1402,7 +1399,7 @@
 						<pre data-id="code"><code class="hlrust" data-trim>
 							let numbers = (2, 4, 8, 16, 32);
 							match numbers {
-								(first, _, third, _, fifth) => {
+								(first, _, third, _, fifth) =&gt; {
 									println!("Some numbers: {first}, {third}, {fifth}")
 								}//ignore exact
 							}
@@ -1419,7 +1416,7 @@
 						<pre data-id="code"><code class="hlrust" data-trim>
 							let origin = Point { x: 0, y: 0, z: 0 };
 							match origin {
-								Point { x, .. } => println!("x is {}", x),
+								Point { x, .. } =&gt; println!("x is {}", x),
 							}//ignore rest
 						</code></pre>
 					</section>
@@ -1453,9 +1450,9 @@
 						</p>
 						<pre data-id="code"><code class="hlrust" data-trim>
 							match p {
-								Point { x, y: 0 } => println!("On the x axis at {}", x),
-								Point { x: 0, y } => println!("On the y axis at {}", y),
-								Point { x, y } => println!("On neither axis: ({}, {})", x, y),
+								Point { x, y: 0 } =&gt; println!("On the x axis at {}", x),
+								Point { x: 0, y } =&gt; println!("On the y axis at {}", y),
+								Point { x, y } =&gt; println!("On neither axis: ({}, {})", x, y),
 							}//You can do this for enums too
 						</code></pre>
 					</section>
@@ -1473,8 +1470,8 @@
 						<pre data-id="code"><code class="hlrust" data-trim>
 							let a = 3;
 							let b = match a {
-								x if x % 2 == 1 => false,
-								_ => None,
+								x if x % 2 == 1 =&gt; false,
+								_ =&gt; None,
 							};
 						</code></pre>
 					</section>
@@ -1492,9 +1489,9 @@
 						<pre data-id="code"><code class="hlrust" data-trim>
 							let num = Some(4);
 							match num {
-								Some(x) if x % 2 == 0 => println!("The number {} is even", x),
-								Some(x) => println!("The number {} is odd", x),
-								None => (),
+								Some(x) if x % 2 == 0 =&gt; println!("The number {} is even", x),
+								Some(x) =&gt; println!("The number {} is odd", x),
+								None =&gt; (),
 							}
 						</code></pre>
 					</section>
@@ -1511,8 +1508,8 @@
 						</p>
 						<pre data-id="code"><code class="hlrust" data-trim>
 							match x {
-								4 | 5 | 6 if y => println!("yes"),
-								_ => println!("no"),
+								4 | 5 | 6 if y =&gt; println!("yes"),
+								_ =&gt; println!("no"),
 							}
 						</code></pre>
 					</section>
@@ -1529,9 +1526,9 @@
 						</p>
 						<pre data-id="code"><code class="hlrust" data-trim>
 							match some_number() {
-								Some(n @ 42) => println!("The Answer: {}!", n),
-								Some(n)      => println!("Not interesting... {}", n),
-								_            => (),
+								Some(n @ 42) =&gt; println!("The Answer: {}!", n),
+								Some(n)      =&gt; println!("Not interesting... {}", n),
+								_            =&gt; (),
 							}
 						</code></pre>
 					</section>
@@ -1562,7 +1559,7 @@
 							Result&lt;T,E&gt;
 						</code></pre>
 						<p style="color: rgb(255,88,88);">
-							Allows inline error handling
+							Allows for inline error handling
 						</p>
 					</section>
 
@@ -1631,23 +1628,255 @@
 						</p>
 					</section>
 
+
+
 				</section>
 
 				<section>
 					<h style="color: rgb(115,220,240);">
 						Packages & Frameworks
 					</h>
-					<section>
-						
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Object Orientation
+						</h1>
 					</section>
 
-      				<section>Vertical Slide 2
-					
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Impl funtions
+						</h1>
 					</section>
 
-					<section>Vertical Slide 3
-
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Impl funtions
+						</h1>
+						<p  style="color: rgb(115,220,240);">
+							Associated functions:
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							impl Point {
+								fn origin() -> Point { 
+									Point { x: 0.0, y: 0.0 }
+								}
+							}
+						</code></pre>
 					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Impl funtions
+						</h1>
+						<p  style="color: rgb(115,220,240);">
+							Methods:
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							impl Rectangle {
+								fn area(&self) -> f64 {
+									// `self` gives access to the struct fields via the dot operator
+									let Point { x: x1, y: y1 } = self.p1;
+									let Point { x: x2, y: y2 } = self.p2;
+									((x1 - x2) * (y1 - y2)).abs()
+								}
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Modules
+						</h1>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Modules
+						</h1>
+						<p  style="color: rgb(115,220,240);">
+							A module is a collection of items: functions, structs, traits, impl blocks, and even other modules.
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Modules
+						</h1>
+						<p  style="color: rgb(115,220,240);">
+							By default, all blocks in a module have private visibility, but this can be overridden with the 'pub' modifier
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Modules
+						</h1>
+						<p  style="color: rgb(115,220,240);">
+							By default, all blocks in a module have private visibility, but this can be overridden with the 'pub' modifier
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Modules
+						</h1>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							self::function();
+							super::function();
+							my::indirect_call();
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Modules
+						</h1>
+						<p  style="color: rgb(115,220,240);">
+							imported with 'use'
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							use crate::deeply::nested::{
+								my_first_function,
+								my_second_function,
+								AndATraitType
+							};
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Modules
+						</h1>
+						<p  style="color: rgb(115,220,240);">
+							imported 'as' local_name
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							use deeply::nested::function as other_function;
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Modules
+						</h1>
+						<p  style="color: rgb(115,220,240);">
+							A crate is a precompiled module
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Crates
+						</h1>
+						<p  style="color: rgb(115,220,240);">
+							A crate can be a binary or a .rlib file by passing the --crate-type flag to lib
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Crates
+						</h1>
+						<p  style="color: rgb(115,220,240);">
+							Rust files are .rs
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Cargo
+						</h1>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Cargo
+						</h1>
+						<p  style="color: rgb(115,220,240);">
+							Cargo is a package manager for crates and building projects
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Cargo
+						</h1>
+						<p  style="color: rgb(115,220,240);">
+							You can install it thru rustup
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Cargo
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							# A binary:
+							cargo new foo
+						</p>
+						<p style="color: rgb(115,220,240);">
+							# OR A library:
+							cargo new --lib foo
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Cargo
+						</h1>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							foo
+							├── Cargo.toml
+							└── src
+								└── main.rs
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Cargo
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							[package]
+							name = "foo"
+							version = "0.1.0"
+							authors = ["mark"]
+
+							[dependencies]
+							clap = "2.27.1" # from crates.io
+							rand = { git = "https://github.com/rust-lang-nursery/rand" } # from online repo
+							bar = { path = "../bar" } # from a path in the local filesystem
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Oxides
+						</h1>
+						<p  style="color: rgb(115,220,240);">
+							cat -> bat
+							ls -> exa
+							find -> fd
+							htop -> ytop
+							rmlint → Czkawka
+							vim/neovim → Helix
+							etc -> etc
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Platforms
+						</h1>
+						<p  style="color: rgb(115,220,240);">
+							GCC and LLVM platforms, 
+							AVR and ARM hals,
+							your toaster and smart fridge,
+							basicly anything
+						</p>
+					</section>
+
 				</section>
 			</div>
 		</div>
