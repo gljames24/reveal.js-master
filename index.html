@@ -200,13 +200,13 @@
 							In functions you can 
 						</p>
 						<p style="color:rgb(165, 210, 40);" class="fragment fade-in-then-out">
-							pass a value as a literal: x
+							pass a value: x
 						</p>
 						<p style="color:rgb(165, 210, 40);" class="fragment fade-in-then-out">
 							pass a reference: &x
 						</p>
 						<p style="color:rgb(165, 210, 40);" class="fragment fade-in-then-out">
-							pass a mutable reference &mut x
+							pass a mutable reference: &mut x
 						</p>
 					</section>
 
@@ -409,8 +409,8 @@
 						<h1 style="color: rgb(255,88,88);">
 							Primative Types
 						</h1>
-						<p>
-							You can cast with 'as'
+						<p  style="color:rgb(0, 255, 220);">
+							You can cast primatives with 'as'
 						</p>
 					</section>
 
@@ -976,7 +976,7 @@
 						<h1 style="color: rgb(255,88,88);">
 							User-defined Types
 						</h1>
-						<p>
+						<p  style="color: rgb(115,220,240);">
 							In Structing
 						</p>
 						<p style="color: rgb(115,220,240);">
@@ -999,7 +999,7 @@
 						<p style="color: rgb(115,220,240);">
 							Enums
 						</p>
-						<p>
+						<p  style="color: rgb(115,220,240);">
 							are essentially super structs
 						</p>
 						<pre data-id="code"><code class="hlrust" data-trim>
@@ -1014,19 +1014,289 @@
 
 					<section data-auto-animate>
 						<h1 style="color: rgb(255,88,88);">
+							User-defined Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Conversions
+						</p>
+						<p  style="color: rgb(115,220,240);">
+							are essentially super structs
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							type::from(T); //converts generic to type
+							T.into(); // also to_string() and to_vec()
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Functions
+						</h1>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
 							Regular
 						</h1>
 						<h1 style="color: rgb(255,88,88);">
 							Functions
 						</h1>
 						<pre data-id="code"><code class="hlrust" data-trim>
-							fn fnName(arguments) → return type {
-								//code block body
+							fn fnName(arguments) -> return type {
+								// code block body
 								let x: i32 = 156;    
-								//return x + 5;
+								// return x + 5;
 								x + 5
-								}
-								
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Inline
+						</h1>
+						<h1 style="color: rgb(255,88,88);">
+							Functions
+						</h1>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							fn function(i: i32) -> i32 { i + 1 }
+							let x = {let y = 6; y + 1}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Closure
+						</h1>
+						<h1 style="color: rgb(255,88,88);">
+							Functions
+						</h1>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							|val| val + x
+							let closure_annotated = |i: i32| -> i32 { i + 1 };
+							let one = || 1;
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Closure
+						</h1>
+						<h1 style="color: rgb(255,88,88);">
+							Functions
+						</h1>
+						<p style="color: rgb(250,200,65);">
+							Closures are actually the inline implementation of FnOnce
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Closure
+						</h1>
+						<h1 style="color: rgb(255,88,88);">
+							Functions
+						</h1>
+						<p style="color: rgb(250,200,65);">
+							Closures are also an inline implementation of FnMut
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim></code>
+							let mut count = 0;
+							let mut inc = || {
+								count += 1;
+								println!("`count`: {}", count);
+							};
+							inc();
+							inc();
+							let _count_reborrowed = &mut count; 
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Closure
+						</h1>
+						<h1 style="color: rgb(255,88,88);">
+							Functions
+						</h1>
+						<p style="color: rgb(250,200,65);">
+							Closures are also an inline implementation of Fn
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim></code>
+							let one = || 1;
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							FnOnce
+						</h1>
+						<h1 style="color: rgb(255,88,88);">
+							Functions
+						</h1>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							fn consume_with_relish<F>(func: F)
+								where F: FnOnce() -> String
+							{
+								println!("Consumed: {}", func());
+								println!("Delicious!");
+							}
+							let x = String::from("x");
+							let consume_and_return_x = move || x;
+							consume_with_relish(consume_and_return_x);
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							FnMut
+						</h1>
+						<h1 style="color: rgb(255,88,88);">
+							Functions
+						</h1>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							fn do_twice<F>(mut func: F)
+								where F: FnMut()
+							{
+								func();
+								func();
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Fn
+						</h1>
+						<h1 style="color: rgb(255,88,88);">
+							Functions
+						</h1>
+						<p>
+							Fn ⊂ FnMut ⊂ FnOnce
+						</p>
+						<p style="color: rgb(250,200,65);">
+							Fn will take immutable references or literals
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Impl
+						</h1>
+						<h1 style="color: rgb(255,88,88);">
+							Functions
+						</h1>
+						<p style="color: rgb(250,200,65);">
+							We'll see more uses of impl during the OOP section
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							fn thing_returning_closure() -> impl Fn(i32) -> bool {
+								println!("here's a closure for you!");
+								|x: i32| x % 3 == 0
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Higher Order
+						</h1>
+						<h1 style="color: rgb(255,88,88);">
+							Functions
+						</h1>
+						<p style="color: rgb(250,200,65);">
+							Implementation of funtional design
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let sum_of_squared_odd_numbers: u32 =
+							(0..)
+							.map(|n| n * n)
+							.take_while(|&n_squared| n_squared < upper)
+							.filter(|&n_squared| is_odd(n_squared))
+							.sum();
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Diverging
+						</h1>
+						<h1 style="color: rgb(255,88,88);">
+							Functions
+						</h1>
+						<p style="color: rgb(250,200,65);">
+							Diverging functions would return the empty type '!'
+						</p>
+						<p style="color: rgb(250,200,65);">
+							This is used in loops, matching, and other control flow
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Code block:
+						</p>
+						<pre data-id="code" class="fragment fade-in-then-out"><code class="hlrust" data-trim>
+							{}
+						</code></pre>
+						<pre data-id="code" class="fragment fade-in-then-out"><code class="hlrust" data-trim>
+							{x} // returns x
+						</code></pre>
+						<pre data-id="code" class="fragment fade-in-then-out"><code class="hlrust" data-trim>
+							{x;} // returns ()
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							If/else:
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							if true {
+								x = 6;
+							}
+							else if {
+								x = 5;
+							}
+							else {
+								x = 4;
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							If/else:
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let x = if true {let x = 6; x} else {7};
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Match:
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let x = if true {let x = 6; x} else {7};
 						</code></pre>
 					</section>
 
