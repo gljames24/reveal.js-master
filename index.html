@@ -1293,11 +1293,342 @@
 							Control Flow
 						</h1>
 						<p style="color: rgb(255,88,88);">
+							Loops:
+						</p>
+						<p style="color: rgb(255,88,88);">
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							loop { // 'scopeName: loop{} for named loops
+								continue;
+								break;
+								//break 'scopeName;
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Loops:
+						</p>
+						<p style="color: rgb(255,88,88);">
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let mut n = 0;
+							while n &lt; 100{
+								println!("{}",n);
+								n += 1;
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Loops:
+						</p>
+						<p style="color: rgb(255,88,88);">
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							for n in 0..100{} == for n in 0..=99{}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Match:
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Match:
+						</p>
+						<p style="color: rgb(255,88,88);">
+							match type{
+								Pattern => Expression,
+								true => println!("Correct"),
+								1 | 2 | 8 => println!("128"),
+								'a'..='j' => println!("Inclusive range"),
+								_ => println("Default or Ignore"),
+							}
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Match:
+						</p>
+						<p style="color: rgb(115,220,240);" data-markdown data-template>
+							for float info go [here](https://github.com/rust-lang/rust/issues/41255)
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Match:
+						</p>
+						<p style="color: rgb(255,88,88);">
+							Tuples, arrays, slices, enums, pointers, and structs can be match based on elements, ignore elements with '_' or '..'.
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
 							Match:
 						</p>
 						<pre data-id="code"><code class="hlrust" data-trim>
-							let x = if true {let x = 6; x} else {7};
+							let numbers = (2, 4, 8, 16, 32);
+							match numbers {
+								(first, _, third, _, fifth) => {
+									println!("Some numbers: {first}, {third}, {fifth}")
+								}//ignore exact
+							}
 						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Match:
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let origin = Point { x: 0, y: 0, z: 0 };
+							match origin {
+								Point { x, .. } => println!("x is {}", x),
+							}//ignore rest
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Match:
+						</p>
+						<p style="color: rgb(255,88,88);">
+							Destructuring with structs
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let p = Point { x: 0, y: 7 };
+							let Point { x: a, y: b } = p;
+							let Point { x, y } = p;
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Match:
+						</p>
+						<p style="color: rgb(255,88,88);">
+							Destructuring with structs
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							match p {
+								Point { x, y: 0 } => println!("On the x axis at {}", x),
+								Point { x: 0, y } => println!("On the y axis at {}", y),
+								Point { x, y } => println!("On neither axis: ({}, {})", x, y),
+							}//You can do this for enums too
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Match:
+						</p>
+						<p style="color: rgb(255,88,88);">
+							Inline assignment
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let a = 3;
+							let b = match a {
+								x if x % 2 == 1 => false,
+								_ => None,
+							};
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Match:
+						</p>
+						<p style="color: rgb(255,88,88);">
+							Inline Match Guards
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let num = Some(4);
+							match num {
+								Some(x) if x % 2 == 0 => println!("The number {} is even", x),
+								Some(x) => println!("The number {} is odd", x),
+								None => (),
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Match:
+						</p>
+						<p style="color: rgb(255,88,88);">
+							Inline Match Guards
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							match x {
+								4 | 5 | 6 if y => println!("yes"),
+								_ => println!("no"),
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Match:
+						</p>
+						<p style="color: rgb(255,88,88);">
+							'@'is used to rebind variables for use in match case body 
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							match some_number() {
+								Some(n @ 42) => println!("The Answer: {}!", n),
+								Some(n)      => println!("Not interesting... {}", n),
+								_            => (),
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Back to Types Real Quick
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Option Type
+						</p>
+						<p style="color: rgb(255,88,88);">
+							Some and None are enums
+						</p>
+						<p style="color: rgb(255,88,88);">
+							They allow you to check if a value is returned safely for things like dereferencing a pointer 
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Back to Types Real Quick
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Result Type
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							Result&lt;T,E&gt;
+						</code></pre>
+						<p style="color: rgb(255,88,88);">
+							Allows inline error handling
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Back to Types Real Quick
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							Result Type
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							result.unwrap();
+						</code></pre>
+						<p style="color: rgb(255,88,88);">
+							Calls panic if an error is returned 
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							If/While let:
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let a = Foo::Bar;
+							if let Foo::Bar == a {
+								println!("a is foobar");
+							}
+							else{
+								println!("a is not foobar");
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							If/While let:
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							while let Some(i) = optional {
+								if i > 9 {
+									println!("Greater than 9, quit!");
+									optional = None;
+								} else {
+									println!("`i` is `{:?}`. Try again.", i);
+									optional = Some(i + 1);
+								}
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(250,200,65);">
+							Control Flow
+						</h1>
+						<p style="color: rgb(255,88,88);">
+							If/While let:
+						</p>
+						<p style="color: rgb(255,88,88);">
+							Really good for destructuring enums
+						</p>
 					</section>
 
 				</section>
