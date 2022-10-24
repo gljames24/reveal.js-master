@@ -43,9 +43,8 @@
 				</section>
 				<section>
 					<h style="color: rgb(220,160,220);">
-						History & Design Constraints
+						History & Design Constraints &lt;
 					</h>
-					<
 					<section data-auto-animate>
 						<h1 style="color: rgb(255,88,88);">
 							What is Rust?
@@ -152,8 +151,17 @@
 						<h1 style="color: rgb(255,88,88);">
 							Enter The Borrow Checker
 						</h1>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Enter The Borrow Checker
+						</h1>
 						<p style="color:rgb(165, 210, 40);">
-							Variable types are inferred by the compiler with 'let', but can be explicity assigned with a ': type'
+							A variable must be assigned a value before use
+						</p>
+						<p style="color:rgb(165, 210, 40);">
+							there is no null
 						</p>
 					</section>
 
@@ -163,6 +171,15 @@
 						</h1>
 						<p style="color:rgb(165, 210, 40);">
 							Values can be passed between variables, but only one variable can own the data at a time unless the value is constant
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Enter The Borrow Checker
+						</h1>
+						<p style="color:rgb(165, 210, 40);">
+							When the owner goes out of scope, the value will be dropped and shadowed
 						</p>
 					</section>
 
@@ -206,8 +223,14 @@
 						<h1 style="color: rgb(255,88,88);">
 							Stack, Heap, & RAII
 						</h1>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Stack, Heap, & RAII
+						</h1>
 						<p style="color: rgb(220,160,220);">
-							All primative types are placed onto the stack
+							All primative types are placed onto the stack as the stack is faster and deallocates without pointers
 						</p>
 					</section>
 
@@ -248,6 +271,15 @@
 						<p style="color: rgb(220,160,220);">
 							This gives Rust its memory, concurrency, and thread safety baked into the design
 						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Stack, Heap, & RAII
+						</h1>
+						<pre data-id="code"><code data-line-numbers class="hlrust" data-trim>
+							let mut x: u32 = 123;
+						</code></pre>
 					</section>
 				</section>
 
@@ -307,6 +339,18 @@
 
 					<section data-auto-animate>
 						<h1 style="color: rgb(255,88,88);">
+							Operators
+						</h1>
+						<p style="color:rgb(0, 255, 220);">
+							Type can be inferred by the compiler most of the time
+						</p>
+						<pre class="fragment fade-in" data-id="code"><code class="hlrust" data-trim>
+							let a: i32 = 5;
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
 							Primative Types
 						</h1>
 					</section>
@@ -360,6 +404,16 @@
 							</tbody>
 						</table>
 					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Primative Types
+						</h1>
+						<p>
+							You can cast with 'as'
+						</p>
+					</section>
+
 
 					<section data-auto-animate>
 						<h1 style="color: rgb(255,88,88);">
@@ -446,10 +500,12 @@
 							[Fill/Alignment](https://doc.rust-lang.org/std/fmt/)
 						</p>
 						<pre data-id="code"><code data-line-numbers class="hlrust" data-trim>
-							format!("{:04}", -5); 		// -0005
-							format!("{:.1}", 0.05);		// 0.1
-							format!("{:?}", (1, 2));	// (1, 2)
-							format!("{:#?}", (1, 2));	// (\n1,\n 2\n)
+							format!("{:+}", 5); 	    // +5		    display sign
+							format!("{:04}", -5); 		// -005			leading zeros
+							format!("{:.1}", 0.05);		// 0.1			float weird rounding
+							format!("{:?}", (1, 2));	// (1, 2)		structs to_string()
+							format!("{:#?}", (1, 2));	// (\n1,\n2\n)	special
+							format!("{:#010x}", 27);	// 0x0000001b   special
 						</code></pre>
 					</section>
 
@@ -466,7 +522,7 @@
 
 							format_spec := [[fill]align][sign]['#']['0'][width]['.' precision]type
 							fill := character
-							align := '&lt;' | '^' | '>'
+							align := '&lt;' | '^' | '&gt;'
 							sign := '+' | '-'
 							width := count
 							precision := count | '*'
@@ -476,6 +532,362 @@
 						</code></pre>
 					</section>
       				
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Compound Types
+						</h1>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Compound Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Tuples
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Compound Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Tuples are fixed size & mixed type 
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let tup: (i32, f64, u8) = (500, 6.4, 1);
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Compound Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Tuple fields are accessed with the '.' operator and position
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let first_value = tup.1;	//rust prefers snake_case 
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Compound Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Tuple can be a unit
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let tup = ();	//⚠️very important!
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Compound Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Tuple values can also be destuctured
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let (x, y, z) = tup;	//we'll talk more about this later
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Compound Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Arrays
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Compound Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Arrays are fixed size & single type
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let a: [i32; 5] = [1, 2, 3, 4, 5];
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Compound Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Arrays can be prefilled with a value
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let a = [3; 5];
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Compound Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Array index elements
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let first = a[0];
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Compound Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Array memory safety:
+						</p>
+						<p style="color: rgb(115,220,240);"> 
+							Rust will intentionally panic if a index is out of bounds unlike C/++ and will report this on the backtrace 
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Compound Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Slices
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Compound Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Slices
+						</p>
+						<p style="color: rgb(115,220,240);"> 
+							A fat reference to a contiguous compund type
+						</p>
+						<p style="color: rgb(115,220,240);">
+							They can be used on Arrays, Strings, and Vectors
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Compound Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Slices themselves aren't owned because they are a reference, not a value, but the value of the reference itself is owned
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let sl = &s[0..5];
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Standard Types
+						</h1>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Standard Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Strings literals are technically slices of 'static memory
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let s: str = "hello";
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Standard Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							String strings are box&lt;T&gt; on the heap and are useful for things like user input
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let mut s = String::from("hello");
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Standard Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							&str can be copied like all stack values, but String has to call the clone function like all heap values
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let y = x; //works for primatives as they have the copy trait
+							let y = x.clone(); works for box&lt;T&gt; impl drop trait
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Standard Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Strings have all the ususally implemented functions in std like trim, split, etc, but watch out for .len() vs .char().count() as chars are USV
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Standard Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Vectors
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Standard Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Vectors
+						</p>
+						<p style="color: rgb(115,220,240);">
+							Used identically to array syntax
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let v: Vec&lt;i32&gt; = Vec::new();
+							let v: Vec&lt;i32&gt; = vec![];
+							let v = vec![1, 2, 3, 4, 5];
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Standard Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Standard Modules
+						</p>
+						<p style="color: rgb(115,220,240);" class="fragment fade-in">
+							ptr, str, vec, hash, hint, future, collections, boxed, clone, any, alloc, marker, io, slice, boxed, borrow, etc
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							User-defined Types
+						</h1>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							User-defined Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Structs
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							User-defined Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Tuple
+						</p>
+						<p style="color: rgb(115,220,240);">
+							Structs
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							struct Color(i32, i32, i32);
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							User-defined Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Regular
+						</p>
+						<p style="color: rgb(115,220,240);">
+							Structs
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							struct thing {
+								active: bool,
+								username: String,
+								email: String,
+								sign_in_count: u64,
+								key: value,
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							User-defined Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Parameter Tuple
+						</p>
+						<p style="color: rgb(115,220,240);">
+							Structs
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							fn build_user(email: String, username: String) -> User {
+								User {
+									email: email,
+									username: username,
+									active: true,
+									sign_in_count: 1,
+								}
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							User-defined Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Unit-like
+						</p>
+						<p style="color: rgb(115,220,240);">
+							Structs
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							struct Abstract; //like ()
+							/*Can still implement traits
+							*/And methods
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							User-defined Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Assigning
+						</p>
+						<p style="color: rgb(115,220,240);">
+							Structs
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							let user2 = User {
+								active: user1.active,
+								username: user1.username,
+								email: String::from("newemail@example.com"),
+								..user1 // clone values from other struct
+							};
+						</code></pre>
+					</section>
+
 				</section>
 
 				<section>
