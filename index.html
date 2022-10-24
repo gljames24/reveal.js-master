@@ -567,7 +567,11 @@
 							Tuple fields are accessed with the '.' operator and position
 						</p>
 						<pre data-id="code"><code class="hlrust" data-trim>
-							let first_value = tup.1;	//rust prefers snake_case 
+							let first_value = tup.1;	//rust prefers snake_case
+
+							fn area(dimensions: (u32, u32)) -> u32 {
+								dimensions.0 * dimensions.1
+							}
 						</code></pre>
 					</section>
 
@@ -592,6 +596,11 @@
 						</p>
 						<pre data-id="code"><code class="hlrust" data-trim>
 							let (x, y, z) = tup;	//we'll talk more about this later
+
+							let v: (i32, f64, u8) = (500, 6.4, 1);
+							let x = v.0; // passed value 
+							let y = v.1; // ownership
+							let z = v.2;
 						</code></pre>
 					</section>
 
@@ -805,6 +814,10 @@
 						</p>
 						<pre data-id="code"><code class="hlrust" data-trim>
 							struct Color(i32, i32, i32);
+
+							fn lightness(color: &Color) -> i32 {
+								color.0 + color.1 + color.2 / 3
+							}
 						</code></pre>
 					</section>
 
@@ -826,6 +839,10 @@
 								sign_in_count: u64,
 								key: value,
 							}
+
+							fn area(rectangle: &Rectangle) -> u32 {
+								rectangle.width * rectangle.height
+							}
 						</code></pre>
 					</section>
 
@@ -834,7 +851,7 @@
 							User-defined Types
 						</h1>
 						<p style="color: rgb(115,220,240);">
-							Parameter Tuple
+							Parameter Field init
 						</p>
 						<p style="color: rgb(115,220,240);">
 							Structs
@@ -856,6 +873,28 @@
 							User-defined Types
 						</h1>
 						<p style="color: rgb(115,220,240);">
+							Parameter Field init
+						</p>
+						<p style="color: rgb(115,220,240);">
+							Structs
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							fn build_user(email: String, username: String) -> User {
+								User {
+									email,
+									username,
+									active: true,
+									sign_in_count: 1,
+								}
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							User-defined Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
 							Unit-like
 						</p>
 						<p style="color: rgb(115,220,240);">
@@ -864,7 +903,8 @@
 						<pre data-id="code"><code class="hlrust" data-trim>
 							struct Abstract; //like ()
 							/*Can still implement traits
-							*/And methods
+							**And methods
+							*/
 						</code></pre>
 					</section>
 
@@ -885,6 +925,108 @@
 								email: String::from("newemail@example.com"),
 								..user1 // clone values from other struct
 							};
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							User-defined Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Lifetimes of
+						</p>
+						<p style="color: rgb(115,220,240);">
+							Structs
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							struct User&lt;'a&gt; {
+								active: bool,
+								username: &'a str,
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							User-defined Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Enums
+						</p>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							User-defined Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Enums
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							enum IpAddrKind {
+								V4,
+								V6,
+							}
+							let four = IpAddrKind::V4;
+							let six = IpAddrKind::V6;
+							fn route(ip_kind: IpAddrKind) {}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							User-defined Types
+						</h1>
+						<p>
+							In Structing
+						</p>
+						<p style="color: rgb(115,220,240);">
+							Enums
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							enum IpAddr { // already in std!
+								V4(u8, u8, u8, u8),
+								V6(String),
+							}
+							let home = IpAddr::V4(127, 0, 0, 1);
+							let loopback = IpAddr::V6(String::from("::1"));
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							User-defined Types
+						</h1>
+						<p style="color: rgb(115,220,240);">
+							Enums
+						</p>
+						<p>
+							are essentially super structs
+						</p>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							enum Message {
+								Quit,
+								Move { x: i32, y: i32 },
+								Write(String),
+								ChangeColor(i32, i32, i32),
+							}
+						</code></pre>
+					</section>
+
+					<section data-auto-animate>
+						<h1 style="color: rgb(255,88,88);">
+							Regular
+						</h1>
+						<h1 style="color: rgb(255,88,88);">
+							Functions
+						</h1>
+						<pre data-id="code"><code class="hlrust" data-trim>
+							fn fnName(arguments) → return type {
+								//code block body
+								let x: i32 = 156;    
+								//return x + 5;
+								x + 5
+								}
+								
 						</code></pre>
 					</section>
 
